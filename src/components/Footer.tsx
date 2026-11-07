@@ -3,11 +3,11 @@ export default function Footer() {
 
   const nav = [
     {
-      heading: 'Produto',
+      heading: 'Navegação',
       links: [
         { label: 'Funcionalidades', href: '#funcionalidades' },
         { label: 'Benefícios', href: '#beneficios' },
-        { label: 'Planos', href: '#planos' },
+        { label: 'Planos comerciais', href: '#planos' },
         { label: 'Acessar sistema', href: '#' },
       ],
     },
@@ -15,50 +15,54 @@ export default function Footer() {
       heading: 'Suporte',
       links: [
         { label: 'Perguntas frequentes', href: '#faq' },
-        // WhatsApp contact: pending — add link here when defined
+        // Contato via WhatsApp pendente de definição formal
       ],
     },
     {
       heading: 'Institucional',
       links: [
-        // Add privacy policy, terms, and other institutional links here when available
-        { label: 'Política de privacidade', href: '#' },
         { label: 'Termos de uso', href: '#' },
+        { label: 'Privacidade de dados', href: '#' },
       ],
     },
   ]
 
   return (
-    <footer className="bg-slate-950 border-t border-white/8 pt-16 pb-8">
+    <footer className="bg-[#111111] text-[#FFFFFF] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#262626]">
           {/* Brand */}
-          <div>
+          <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-4">
               <img
                 src="/logo.png"
                 alt="Nexus Comercial Logo"
-                className="w-9 h-9 rounded-xl object-cover shadow-sm shrink-0 border border-white/10"
+                className="w-8 h-8 rounded-lg object-cover border border-[#333333] shrink-0"
               />
-              <span className="font-semibold text-base text-white tracking-tight">
-                Nexus<span className="text-blue-400"> Comercial</span>
+              <span className="font-semibold text-base tracking-tight text-[#FFFFFF]">
+                Nexus Comercial
               </span>
             </a>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-56">
-              Plataforma de gestão comercial para lojas de eletrônicos, compra e venda de aparelhos usados e assistências técnicas.
+            <p className="text-sm text-[#737373] leading-relaxed max-w-sm mb-4">
+              Plataforma de gestão comercial integrada para lojas de eletrônicos, compra e venda de usados e assistências técnicas.
             </p>
+            <span className="text-xs font-mono text-[#737373] block">
+              Sua loja inteira. Sob controle. Em um só lugar.
+            </span>
           </div>
 
           {/* Nav columns */}
           {nav.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-4">{col.heading}</h4>
+              <h4 className="text-xs font-mono uppercase tracking-[0.15em] text-[#D9D9D9] mb-4">
+                {col.heading}
+              </h4>
               <ul className="space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="text-slate-500 hover:text-slate-300 text-sm transition-colors"
+                      className="text-sm text-[#737373] hover:text-[#FFFFFF] transition-colors"
                     >
                       {l.label}
                     </a>
@@ -70,16 +74,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-slate-600 text-sm">
-            © {currentYear} Nexus Comercial. Todos os direitos reservados.
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs font-mono text-[#737373]">
+            &copy; {currentYear} Nexus Comercial. Todos os direitos reservados.
           </p>
-          <p className="text-slate-700 text-xs">
-            Desenvolvido para lojas de eletrônicos.
+          <p className="text-xs font-mono text-[#737373]">
+            Desenvolvido para operações de compra, venda e manutenção de eletrônicos.
           </p>
         </div>
       </div>
     </footer>
   )
 }
-

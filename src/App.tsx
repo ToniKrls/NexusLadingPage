@@ -12,7 +12,7 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen font-sans antialiased">
+    <div className="min-h-screen font-sans antialiased bg-[#111111] text-[#111111] selection:bg-[#333333] selection:text-[#FFFFFF]">
       <Navbar />
       <main>
         <Hero />

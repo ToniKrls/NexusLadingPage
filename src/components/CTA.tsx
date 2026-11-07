@@ -2,68 +2,36 @@ import { ArrowRight } from 'lucide-react'
 
 export default function CTA() {
   return (
-    <section className="py-24 bg-[#001a6e] overflow-hidden relative">
-      {/* Background glow */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(ellipse 70% 60% at 50% 100%, rgba(10, 92, 245, 0.3) 0%, transparent 70%)`,
-          }}
-        />
-      </div>
+    <section className="py-24 md:py-32 bg-[#111111] text-[#FFFFFF] border-b border-[#262626]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#737373] mb-4 block">
+          Acesso à Plataforma
+        </span>
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 bg-blue-700/30 border border-blue-500/40 rounded-full px-3.5 py-1.5 mb-7">
-          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-          <span className="text-blue-300 text-xs font-semibold tracking-wide uppercase">
-            Pronto para começar
-          </span>
-        </div>
-
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-          Centralize a gestão da sua loja.{' '}
-          <span className="text-blue-400">Hoje.</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#FFFFFF] leading-tight mb-6">
+          Sua loja inteira. Sob controle. Em um só lugar.
         </h2>
 
-        <p className="text-xl text-blue-200 leading-relaxed mb-10 max-w-2xl mx-auto">
-          Avaliação, estoque, vendas, financeiro e assistência técnica — tudo organizado em uma plataforma desenvolvida para o seu tipo de negócio.
+        <p className="text-base sm:text-lg text-[#737373] leading-relaxed max-w-2xl mx-auto mb-10">
+          Substitua o improviso de planilhas e controles manuais por uma plataforma desenvolvida sob medida para compra, venda e manutenção de eletrônicos.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
           <a
             href="#planos"
-            className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-7 py-4 rounded-xl transition-all shadow-xl shadow-blue-900/50 hover:shadow-blue-700/50 text-base"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#111111] hover:bg-[#E5E5E5] font-medium text-sm px-7 py-3.5 rounded-md transition-colors"
           >
-            Conhecer os planos
-            <ArrowRight size={18} />
+            Conhecer planos
+            <ArrowRight size={16} />
           </a>
           <a
             href="#"
-            className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-medium px-7 py-4 rounded-xl border border-white/20 transition-all text-base"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#1A1A1A] text-[#FFFFFF] hover:bg-[#262626] border border-[#333333] font-medium text-sm px-7 py-3.5 rounded-md transition-colors"
           >
-            Acessar o sistema
+            Acessar sistema
           </a>
-        </div>
-
-        {/* Decorative feature row */}
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-          {[
-            { label: 'Avaliação padronizada' },
-            { label: 'Estoque por IMEI' },
-            { label: 'Gestão financeira' },
-            { label: 'Ordens de serviço' },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="bg-white/8 border border-white/15 rounded-xl py-3 px-3 text-center"
-            >
-              <span className="text-blue-200 text-xs font-medium">{item.label}</span>
-            </div>
-          ))}
         </div>
       </div>
     </section>
   )
 }
-

@@ -7,25 +7,27 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: [
+          'Inter',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'sans-serif',
+        ],
       },
       colors: {
-        brand: {
-          50: '#eef4ff',
-          100: '#dce9ff',
-          200: '#b4d0ff',
-          300: '#76abff',
-          400: '#3381ff',
-          500: '#0a5cf5',
-          600: '#003ecf',
-          700: '#002fa3',
-          800: '#002686',
-          900: '#001a6e',
-          950: '#000d3d',
+        mono: {
+          black: '#111111',
+          surface: '#1A1A1A',
+          dark: '#333333',
+          gray: '#737373',
+          light: '#D9D9D9',
+          lighter: '#F3F3F3',
+          white: '#FFFFFF',
         },
       },
     },
   },
   plugins: [],
 }
-

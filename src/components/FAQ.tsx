@@ -1,60 +1,64 @@
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { Plus, Minus } from 'lucide-react'
 
 const faqs = [
   {
     q: 'Para quais tipos de estabelecimento o Nexus Comercial foi desenvolvido?',
-    a: 'O Nexus Comercial foi desenvolvido para lojas de eletrônicos, estabelecimentos que trabalham com compra e venda de aparelhos usados e assistências técnicas. Qualquer negócio que precise gerenciar avaliação de aparelhos, estoque, vendas, financeiro e serviços técnicos pode se beneficiar da plataforma.',
+    a: 'O sistema foi desenvolvido especificamente para lojas de eletrônicos, estabelecimentos que trabalham com compra e venda de aparelhos usados/seminovos e assistências técnicas de manutenção.',
   },
   {
-    q: 'O sistema permite controlar o estoque de aparelhos?',
-    a: 'Sim. O Nexus Comercial possui um módulo de gestão de estoque onde cada aparelho é cadastrado individualmente com IMEI, modelo, grade de conservação, custo de entrada e valor de venda. É possível buscar por IMEI, serial ou modelo, filtrar por status e acessar o histórico de movimentações.',
+    q: 'O sistema permite controlar o estoque de aparelhos individualmente?',
+    a: 'Sim. Cada aparelho é cadastrado com seu IMEI ou número de série, com informações de custo de aquisição, classificação em grade, status operacional (disponível, em reparo, peça trocada) e valor de revenda sugerido.',
   },
   {
-    q: 'É possível gerenciar Ordens de Serviço de assistência técnica?',
-    a: 'Sim. Os planos Gestão + OS e Completo incluem o módulo de Ordens de Serviço, que permite registrar, acompanhar e manter histórico dos serviços realizados pela assistência técnica.',
+    q: 'É possível gerenciar ordens de serviço de assistência técnica?',
+    a: 'Sim. Os planos "Gestão + OS" e "Completo" incluem o módulo de Ordens de Serviço para registrar entradas de aparelhos, acompanhamento de bancada e histórico de reparos realizados.',
   },
   {
-    q: 'Posso contratar somente uma funcionalidade?',
-    a: 'Sim. O plano Funcionalidade (R$ 49,90) é voltado para quem deseja acessar apenas um recurso específico do Nexus Comercial. Entre em contato quando o atendimento estiver disponível para saber quais funcionalidades podem ser contratadas individualmente.',
+    q: 'Posso contratar somente uma funcionalidade do sistema?',
+    a: 'Sim. O plano "Funcionalidade individual" (R$ 49,90) é voltado para clientes que necessitam de apenas um recurso específico da plataforma.',
   },
   {
     q: 'O Nexus Comercial funciona para múltiplas lojas ou filiais?',
-    a: 'Sim. A plataforma suporta a gestão de múltiplas lojas e filiais, permitindo visualizar o estoque de cada unidade separadamente e realizar transferências de aparelhos entre estoques.',
+    a: 'Sim. A plataforma suporta a gestão de múltiplas unidades, permitindo o isolamento de estoques por loja e o controle de transferências internas entre filiais.',
   },
   {
-    q: 'A validação de IMEI verifica se o aparelho é roubado ou bloqueado?',
-    a: 'Não. O Nexus Comercial valida o formato do IMEI e do número de série Apple — verificando se o número está no padrão correto. O sistema não realiza consultas a bases externas de aparelhos roubados, bloqueados ou com restrição de iCloud.',
+    q: 'A validação de IMEI verifica procedência ou bloqueio de iCloud?',
+    a: 'Não. O Nexus Comercial realiza a validação de conformidade do formato do IMEI e do número de série Apple. O sistema não efetua consultas a bases externas de bloqueio policial ou restrições de ativação iCloud.',
   },
   {
-    q: 'Quais são os planos disponíveis e seus valores?',
-    a: 'O Nexus Comercial oferece três planos: Funcionalidade individual por R$ 49,90, Gestão + OS por R$ 79,90 (inclui gestão comercial e módulo de ordens de serviço) e Completo por R$ 99,90 (todas as funcionalidades da plataforma). A periodicidade de cobrança será informada em breve.',
+    q: 'Quais são os planos disponíveis e valores?',
+    a: 'A plataforma oferece três modalidades: Funcionalidade individual por R$ 49,90, Gestão + OS por R$ 79,90 e o plano Completo por R$ 99,90. A periodicidade de cobrança será confirmada oportunamente.',
   },
   {
-    q: 'O sistema é acessado pelo navegador ou precisa ser instalado?',
-    a: 'O Nexus Comercial é uma plataforma web, acessada pelo navegador. Não é necessário instalar nenhum software.',
+    q: 'O sistema exige instalação ou funciona pelo navegador?',
+    a: 'O Nexus Comercial é uma aplicação web em nuvem (SaaS), acessível diretamente pelo navegador em computadores ou notebooks, sem necessidade de servidores locais.',
   },
 ]
 
-function Item({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className={`border rounded-xl transition-all ${open ? 'border-blue-200 bg-blue-50/50' : 'border-slate-200 bg-white hover:border-slate-300'}`}>
+    <div className="border-b border-[#D9D9D9] py-6">
       <button
-        className="w-full flex items-start gap-4 p-5 text-left"
+        type="button"
+        className="w-full flex items-center justify-between text-left gap-6 group"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="flex-1 text-slate-900 font-medium text-sm leading-relaxed">{q}</span>
-        <ChevronDown
-          size={18}
-          className={`mt-0.5 shrink-0 text-slate-400 transition-transform duration-200 ${open ? 'rotate-180 text-blue-600' : ''}`}
-        />
+        <span className="text-base sm:text-lg font-medium text-[#111111] group-hover:text-[#737373] transition-colors">
+          {q}
+        </span>
+        <span className="shrink-0 text-[#111111] p-1">
+          {open ? <Minus size={18} strokeWidth={1.5} /> : <Plus size={18} strokeWidth={1.5} />}
+        </span>
       </button>
       {open && (
-        <div className="px-5 pb-5">
-          <p className="text-slate-600 text-sm leading-relaxed">{a}</p>
+        <div className="pt-4 pr-12">
+          <p className="text-sm sm:text-base text-[#737373] leading-relaxed">
+            {a}
+          </p>
         </div>
       )}
     </div>
@@ -63,27 +67,25 @@ function Item({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 bg-slate-50">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 md:py-32 bg-[#F3F3F3] border-b border-[#D9D9D9]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-3.5 py-1.5 mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-slate-500" />
-            <span className="text-slate-600 text-xs font-semibold tracking-wide uppercase">Perguntas frequentes</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
-            Dúvidas comuns
+        <div className="mb-14 md:mb-16">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#737373] mb-3 block">
+            Perguntas Frequentes
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#111111] leading-tight">
+            Esclarecimentos comerciais e técnicos.
           </h2>
         </div>
 
-        {/* Items */}
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <Item key={i} q={faq.q} a={faq.a} />
+        {/* Clean list with bottom dividers */}
+        <div className="border-t border-[#D9D9D9]">
+          {faqs.map((faq) => (
+            <FaqItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
         </div>
       </div>
     </section>
   )
 }
-

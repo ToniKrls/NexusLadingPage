@@ -1,86 +1,77 @@
 export default function Screenshots() {
   return (
-    <section className="py-24 bg-slate-50 overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#F3F3F3] border-b border-[#D9D9D9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-3.5 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
-            <span className="text-blue-700 text-xs font-semibold tracking-wide uppercase">Interface do sistema</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight mb-4">
-            Conheça o sistema por dentro
+        <div className="max-w-3xl mb-16 md:mb-20">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#737373] mb-3 block">
+            Interface Real
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111] leading-tight mb-5">
+            Interface limpa, pensada para agilidade no atendimento diário.
           </h2>
-          <p className="text-lg text-slate-500 leading-relaxed">
-            Uma interface organizada, desenvolvida para o fluxo de trabalho real de lojas de eletrônicos.
+          <p className="text-base sm:text-lg text-[#737373] leading-relaxed">
+            Sem telas poluídas ou fluxos confusos. O Nexus Comercial foi construído para que o operador encontre qualquer aparelho e processe qualquer venda em poucos cliques.
           </p>
         </div>
 
-        {/* Two-column screenshot showcase */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Card 1 */}
-          <div className="group">
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-              {/* Label bar */}
-              <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-100">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-blue-500" />
-                  <span className="text-sm font-semibold text-slate-700">Avaliação de aparelhos</span>
-                </div>
-                <span className="text-xs text-slate-400 font-mono bg-slate-50 px-2 py-0.5 rounded">Grade A · B · C</span>
+        {/* Showcase Grid */}
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+          {/* Item 1 */}
+          <div className="border border-[#D9D9D9] bg-[#FFFFFF] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#D9D9D9]">
+                <h3 className="font-semibold text-base text-[#111111]">
+                  Painel de Avaliação e Resumo
+                </h3>
+                <span className="text-xs font-mono text-[#737373]">
+                  Grade &amp; Deduções
+                </span>
               </div>
-              <div className="p-4 bg-slate-50">
-                <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img
-                    src="/screenshot-avaliacao.jpg"
-                    alt="Interface de avaliação de aparelhos — grade de conservação, peças e resumo de compra"
-                    className="w-full block"
-                  />
-                </div>
-              </div>
-              <div className="px-5 pb-5">
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Avalie o aparelho em etapas estruturadas: armazenamento, peça substituída, grade de conservação e peças a trocar. O resumo com valor de compra, sugestão de revenda e descontos aplicados aparece em tempo real.
-                </p>
+              <div className="overflow-hidden border border-[#D9D9D9] bg-[#111111] mb-5">
+                <img
+                  src="/screenshot-avaliacao.jpg"
+                  alt="Tela de avaliação de aparelhos com cálculo de grade e peças"
+                  className="w-full h-auto block"
+                />
               </div>
             </div>
+            <p className="text-sm text-[#737373] leading-relaxed">
+              O operador seleciona as características físicas do dispositivo e visualiza imediatamente o subtotal de referência, os descontos aplicados por peças a trocar e a sugestão de preço de compra e teto de revenda.
+            </p>
           </div>
 
-          {/* Card 2 */}
-          <div className="group">
-            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-              {/* Label bar */}
-              <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-100">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                  <span className="text-sm font-semibold text-slate-700">Estoque de aparelhos</span>
-                </div>
-                <span className="text-xs text-slate-400 font-mono bg-slate-50 px-2 py-0.5 rounded">Por IMEI · Serial</span>
+          {/* Item 2 */}
+          <div className="border border-[#D9D9D9] bg-[#FFFFFF] p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#D9D9D9]">
+                <h3 className="font-semibold text-base text-[#111111]">
+                  Gestão Centralizada de Estoque
+                </h3>
+                <span className="text-xs font-mono text-[#737373]">
+                  Controle por IMEI
+                </span>
               </div>
-              <div className="p-4 bg-slate-50">
-                <div className="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
-                  <img
-                    src="/screenshot-estoque.jpg"
-                    alt="Interface de estoque de aparelhos com IMEI, grade, custo e valor de venda"
-                    className="w-full block"
-                  />
-                </div>
-              </div>
-              <div className="px-5 pb-5">
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  Visualize cada aparelho no estoque com IMEI, modelo, grade, status e valores de custo e venda. Acesse o histórico, edite, transfira entre lojas ou registre a venda diretamente da tela de estoque.
-                </p>
+              <div className="overflow-hidden border border-[#D9D9D9] bg-[#111111] mb-5">
+                <img
+                  src="/screenshot-estoque.jpg"
+                  alt="Visão do estoque de aparelhos com IMEI, custo e preço de venda"
+                  className="w-full h-auto block"
+                />
               </div>
             </div>
+            <p className="text-sm text-[#737373] leading-relaxed">
+              A listagem de aparelhos apresenta o status de cada item (disponível, em reparo ou peça trocada), dados de custo e preço de venda, botões de ação rápida para histórico, etiquetas, edição, transferência e venda.
+            </p>
           </div>
         </div>
 
-        {/* Bottom note */}
-        <p className="text-center text-slate-400 text-sm mt-8">
-          Capturas reais da interface do Nexus Comercial.
-        </p>
+        <div className="mt-8 text-center">
+          <span className="text-xs font-mono text-[#737373]">
+            Capturas autênticas da interface em produção do Nexus Comercial.
+          </span>
+        </div>
       </div>
     </section>
   )
 }
-
