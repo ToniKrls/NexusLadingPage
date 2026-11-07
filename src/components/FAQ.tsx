@@ -40,23 +40,27 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border-b border-[#D9D9D9] py-6">
+    <div className={`rounded-xl border transition-all duration-200 overflow-hidden ${
+      open
+        ? 'bg-[#F9F9F8] border-[#D5D5D0] shadow-card'
+        : 'bg-[#FFFFFF] border-[#E6E6E3] shadow-subtle hover:border-[#D5D5D0]'
+    }`}>
       <button
         type="button"
-        className="w-full flex items-center justify-between text-left gap-6 group"
+        className="w-full flex items-center justify-between text-left p-6 gap-6 group"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="text-base sm:text-lg font-medium text-[#111111] group-hover:text-[#737373] transition-colors">
+        <span className="text-base sm:text-lg font-medium text-[#1D1D1B] group-hover:text-[#52524E] transition-colors">
           {q}
         </span>
-        <span className="shrink-0 text-[#111111] p-1">
-          {open ? <Minus size={18} strokeWidth={1.5} /> : <Plus size={18} strokeWidth={1.5} />}
+        <span className="shrink-0 text-[#1D1D1B] p-1 rounded-md bg-[#F5F5F4] border border-[#E6E6E3]">
+          {open ? <Minus size={16} strokeWidth={2} /> : <Plus size={16} strokeWidth={2} />}
         </span>
       </button>
       {open && (
-        <div className="pt-4 pr-12">
-          <p className="text-sm sm:text-base text-[#737373] leading-relaxed">
+        <div className="px-6 pb-6 pt-1 border-t border-[#EAEAEA]">
+          <p className="text-sm sm:text-base text-[#52524E] leading-relaxed">
             {a}
           </p>
         </div>
@@ -67,20 +71,20 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-24 md:py-32 bg-[#F3F3F3] border-b border-[#D9D9D9]">
+    <section id="faq" className="py-24 md:py-32 bg-[#FFFFFF] border-b border-[#E6E6E3]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-14 md:mb-16">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#737373] mb-3 block">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#73736E] mb-3 block">
             Perguntas Frequentes
           </span>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-[#111111] leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-[#1D1D1B] leading-tight">
             Esclarecimentos comerciais e técnicos.
           </h2>
         </div>
 
-        {/* Clean list with bottom dividers */}
-        <div className="border-t border-[#D9D9D9]">
+        {/* Tactile Accordion list */}
+        <div className="space-y-3.5">
           {faqs.map((faq) => (
             <FaqItem key={faq.q} q={faq.q} a={faq.a} />
           ))}

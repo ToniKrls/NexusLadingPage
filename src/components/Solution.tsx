@@ -33,33 +33,36 @@ const coreCapabilities = [
 
 export default function Solution() {
   return (
-    <section id="beneficios" className="py-24 md:py-32 bg-[#F3F3F3] border-b border-[#D9D9D9]">
+    <section id="beneficios" className="py-24 md:py-32 bg-[#EFEFEA] border-b border-[#E0E0DC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
-          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#737373] mb-3 block">
+          <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#73736E] mb-3 block">
             A Plataforma
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#111111] leading-tight mb-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-[#1D1D1B] leading-tight mb-5">
             Nexus Comercial — tudo que sua loja precisa, em um único sistema.
           </h2>
-          <p className="text-base sm:text-lg text-[#737373] leading-relaxed">
-            Desenvolvido exclusivamente para a dinâmica de compra, venda e assistência de eletrônicos, integrando todas as etapas em uma interface unificada.
+          <p className="text-base sm:text-lg text-[#52524E] leading-relaxed">
+            Desenvolvido exclusivamente para a dinâmica de compra, venda e assistência de eletrônicos, integrando todas as etapas em uma experiência unificada.
           </p>
         </div>
 
-        {/* Modular Grid with clean borders */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#D9D9D9] border border-[#D9D9D9]">
+        {/* Modular Grid with refined surfaces */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {coreCapabilities.map((item) => (
-            <div key={item.title} className="bg-[#FFFFFF] p-8 sm:p-10 flex flex-col justify-between">
+            <div
+              key={item.title}
+              className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle hover:shadow-card transition-all duration-200 flex flex-col justify-between"
+            >
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#737373] mb-3 block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#73736E] mb-3 block">
                   {item.category}
                 </span>
-                <h3 className="text-lg font-semibold text-[#111111] tracking-tight mb-3">
+                <h3 className="text-lg font-semibold text-[#1D1D1B] tracking-tight mb-3">
                   {item.title}
                 </h3>
-                <p className="text-sm text-[#737373] leading-relaxed">
+                <p className="text-sm text-[#52524E] leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -67,28 +70,28 @@ export default function Solution() {
           ))}
         </div>
 
-        {/* Enterprise capabilities row */}
-        <div className="mt-12 grid sm:grid-cols-2 gap-6 pt-6">
-          <div className="border border-[#D9D9D9] bg-[#FFFFFF] p-6 sm:p-8">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#737373] mb-2 block">
+        {/* Multi-store & User Permissions Row */}
+        <div className="mt-8 grid sm:grid-cols-2 gap-6">
+          <div className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#73736E] mb-2 block">
               Multiunidades
             </span>
-            <h4 className="text-base font-semibold text-[#111111] mb-2">
+            <h4 className="text-base font-semibold text-[#1D1D1B] mb-2">
               Múltiplas lojas e filiais
             </h4>
-            <p className="text-sm text-[#737373] leading-relaxed">
+            <p className="text-sm text-[#52524E] leading-relaxed">
               Monitore os estoques de matriz e filiais separadamente, com controle de transferências internas entre estoques.
             </p>
           </div>
 
-          <div className="border border-[#D9D9D9] bg-[#FFFFFF] p-6 sm:p-8">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#737373] mb-2 block">
+          <div className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-[#73736E] mb-2 block">
               Governança
             </span>
-            <h4 className="text-base font-semibold text-[#111111] mb-2">
+            <h4 className="text-base font-semibold text-[#1D1D1B] mb-2">
               Gestão de usuários e permissões
             </h4>
-            <p className="text-sm text-[#737373] leading-relaxed">
+            <p className="text-sm text-[#52524E] leading-relaxed">
               Defina com precisão quais colaboradores podem avaliar aparelhos, registrar vendas, movimentar estoque ou visualizar o caixa.
             </p>
           </div>
