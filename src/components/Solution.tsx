@@ -1,33 +1,33 @@
-const coreCapabilities = [
+const complementaryFeatures = [
   {
-    category: 'Aquisição & Entrada',
-    title: 'Avaliação técnica padronizada',
-    description: 'Parâmetros objetivos de Grade A, B e C, abatimento automático por peças a trocar e cálculo preciso do preço de compra e teto de revenda.',
-  },
-  {
-    category: 'Rastreabilidade',
-    title: 'Controle de estoque por IMEI',
-    description: 'Identificação individual de cada aparelho com validação de formato de IMEI e número de série, custo de entrada e histórico de movimentações.',
-  },
-  {
-    category: 'Operação Comercial',
+    category: 'Balcão Comercial',
     title: 'PDV e registro de vendas',
-    description: 'Conclusão de vendas integrada ao estoque da loja, com suporte a múltiplas formas de pagamento e emissão de comprovantes.',
+    description: 'Conclusão ágil de vendas com suporte a múltiplos meios de pagamento, baixa automática do aparelho no estoque e emissão de comprovante ao cliente.',
   },
   {
-    category: 'Gestão Financeira',
+    category: 'Financeiro',
     title: 'Fechamento diário e caixa',
-    description: 'Registro de entradas e saídas por meio de pagamento, facilitando a conferência diária e a clareza sobre os resultados da loja.',
+    description: 'Controle de entradas e saídas por dinheiro, PIX e cartões. Facilita a conferência diária e assegura clareza sobre o faturamento do negócio.',
   },
   {
-    category: 'Assistência Técnica',
-    title: 'Ordens de serviço estruturadas',
-    description: 'Acompanhamento do fluxo de reparos desde a entrada do aparelho até a entrega ao cliente, com histórico dos serviços realizados.',
-  },
-  {
-    category: 'Decisão Estratégica',
+    category: 'Inteligência de Gestão',
     title: 'Relatórios e indicadores',
-    description: 'Acompanhamento consolidado de vendas, margens, aparelhos em estoque e produtividade do estabelecimento.',
+    description: 'Acompanhamento consolidado de vendas diárias, margens apuradas, giro de inventário e métricas essenciais para tomada de decisões.',
+  },
+  {
+    category: 'Acesso e Segurança',
+    title: 'Gestão de usuários e permissões',
+    description: 'Perfis de acesso personalizados por colaborador (gerência, vendedores e técnicos), resguardando informações financeiras e dados sensíveis.',
+  },
+  {
+    category: 'Conformidade',
+    title: 'Comprovantes e termos formais',
+    description: 'Geração padronizada de recibos de compra e venda, termos de garantia e comprovantes de entrega para resguardo jurídico da operação.',
+  },
+  {
+    category: 'Organização Central',
+    title: 'Cadastros e tabelas de preço',
+    description: 'Registro centralizado de clientes, fornecedores parceiros, catálogo de peças e acessórios, com tabela de preços e descontos vigentes.',
   },
 ]
 
@@ -41,16 +41,16 @@ export default function Solution() {
             A Plataforma
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold tracking-tight text-[#1D1D1B] leading-tight mb-5">
-            Nexus Comercial — tudo que sua loja precisa, em um único sistema.
+            Recursos complementares para o dia a dia da sua loja.
           </h2>
           <p className="text-base sm:text-lg text-[#52524E] leading-relaxed">
-            Desenvolvido exclusivamente para a dinâmica de compra, venda e assistência de eletrônicos, integrando todas as etapas em uma experiência unificada.
+            Além dos módulos centrais de avaliação, estoque, assistência técnica e filiais, o Nexus Comercial integra ferramentas administrativas essenciais para manter sua rotina organizada.
           </p>
         </div>
 
         {/* Modular Grid with refined surfaces */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {coreCapabilities.map((item) => (
+          {complementaryFeatures.map((item) => (
             <div
               key={item.title}
               className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle hover:shadow-card transition-all duration-200 flex flex-col justify-between"
@@ -68,33 +68,6 @@ export default function Solution() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Multi-store & User Permissions Row */}
-        <div className="mt-8 grid sm:grid-cols-2 gap-6">
-          <div className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#73736E] mb-2 block">
-              Multiunidades
-            </span>
-            <h4 className="text-base font-semibold text-[#1D1D1B] mb-2">
-              Múltiplas lojas e filiais
-            </h4>
-            <p className="text-sm text-[#52524E] leading-relaxed">
-              Monitore os estoques de matriz e filiais separadamente, com controle de transferências internas entre estoques.
-            </p>
-          </div>
-
-          <div className="bg-[#FFFFFF] rounded-xl border border-[#E0E0DC] p-8 shadow-subtle">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-[#73736E] mb-2 block">
-              Governança
-            </span>
-            <h4 className="text-base font-semibold text-[#1D1D1B] mb-2">
-              Gestão de usuários e permissões
-            </h4>
-            <p className="text-sm text-[#52524E] leading-relaxed">
-              Defina com precisão quais colaboradores podem avaliar aparelhos, registrar vendas, movimentar estoque ou visualizar o caixa.
-            </p>
-          </div>
         </div>
       </div>
     </section>
