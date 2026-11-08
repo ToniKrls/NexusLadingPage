@@ -1,4 +1,14 @@
+import { useState } from 'react'
+import { Layers, ArrowLeftRight, Store } from 'lucide-react'
+
 export default function Features() {
+  // Estado para controlar qual imagem está em primeiro plano no Destaque 4
+  const [activeCard, setActiveCard] = useState<'transferencia' | 'lojas'>('transferencia')
+  const [hoveredCard, setHoveredCard] = useState<'transferencia' | 'lojas' | null>(null)
+
+  // O card atualmente visível no topo é determinado pelo hover (se houver) ou pelo clique ativo
+  const topCard = hoveredCard || activeCard
+
   return (
     <section id="funcionalidades" className="py-24 md:py-32 bg-[#151514] text-[#FFFFFF] border-b border-[#262624]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,17 +207,66 @@ export default function Features() {
 
         {/* ========================================================= */}
         {/* === DESTAQUE 4: Gestão de Múltiplas Lojas             === */}
-        {/* === Layout: Imagens sobrepostas à esq. | Texto à dir. === */}
+        {/* === Layout: Cartões Sobrepostos Interativos à esq.    === */}
         {/* ========================================================= */}
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-          {/* Overlaid Screenshots Composition (left on desktop - 7 cols) */}
+          {/* Overlaid Interactive Screenshots Composition (7 cols) */}
           <div className="order-2 lg:order-1 lg:col-span-7">
-            <div className="relative pt-6 pr-4 sm:pr-8 pb-4 sm:pb-6">
-              {/* Background Overlaid Image (82-85% size, shifted up and right) */}
-              <div className="hidden sm:block absolute top-0 right-0 w-[84%] z-0">
-                <div className="bg-[#1D1D1B] rounded-xl border border-[#2F2F2B] p-2 shadow-card opacity-90 hover:opacity-100 transition-opacity">
-                  <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#2A2A27] mb-1.5 bg-[#181817] rounded-t-lg">
-                    <span className="text-[11px] font-mono text-[#A3A39E]">minhas_lojas / filiais</span>
+            {/* Quick interactive tabs / controls */}
+            <div className="flex items-center justify-between mb-4 px-1">
+              <div className="inline-flex items-center p-1 bg-[#1A1A18] rounded-lg border border-[#2F2F2B] text-xs">
+                <button
+                  type="button"
+                  onClick={() => setActiveCard('transferencia')}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-medium transition-all ${
+                    topCard === 'transferencia'
+                      ? 'bg-[#2A2A27] text-[#FFFFFF] shadow-sm'
+                      : 'text-[#73736E] hover:text-[#A3A39E]'
+                  }`}
+                >
+                  <ArrowLeftRight size={13} />
+                  <span>Transferência entre lojas</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveCard('lojas')}
+                  className={`flex items-center gap-2 px-3 py-1.5 rounded-md font-medium transition-all ${
+                    topCard === 'lojas'
+                      ? 'bg-[#2A2A27] text-[#FFFFFF] shadow-sm'
+                      : 'text-[#73736E] hover:text-[#A3A39E]'
+                  }`}
+                >
+                  <Store size={13} />
+                  <span>Minhas lojas &amp; filiais</span>
+                </button>
+              </div>
+
+              <span className="hidden sm:inline-flex text-[11px] font-mono text-[#73736E]">
+                Passe o mouse ou clique para alternar
+              </span>
+            </div>
+
+            {/* Overlaid Interactive Container */}
+            <div
+              className="relative w-full h-[380px] sm:h-[450px] md:h-[490px] lg:h-[510px]"
+              onMouseLeave={() => setHoveredCard(null)}
+            >
+              {/* Card B: "Minhas Lojas & Filiais" (Posicionada no canto superior direito) */}
+              <div
+                onClick={() => setActiveCard('lojas')}
+                onMouseEnter={() => setHoveredCard('lojas')}
+                className={`absolute top-0 right-0 w-[82%] sm:w-[78%] cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  topCard === 'lojas'
+                    ? 'z-30 opacity-100 scale-100 shadow-ambient -translate-y-1'
+                    : 'z-10 opacity-85 scale-[0.96] shadow-card hover:opacity-100'
+                }`}
+              >
+                <div className="bg-[#1D1D1B] rounded-xl border border-[#2F2F2B] p-2 sm:p-2.5 transition-colors">
+                  <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#2A2A27] mb-2 bg-[#181817] rounded-t-lg">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#73736E]" />
+                      <span className="text-[11px] font-mono text-[#A3A39E]">minhas_lojas / filiais</span>
+                    </div>
                     <span className="text-[10px] font-mono text-[#73736E]">Rede Comercial</span>
                   </div>
                   <div className="overflow-hidden rounded-lg border border-[#262624] bg-[#121211]">
@@ -220,35 +279,41 @@ export default function Features() {
                 </div>
               </div>
 
-              {/* Foreground Primary Image (100% size, modal de transferência) */}
-              <div className="relative z-10 w-full sm:w-[90%] bg-[#1D1D1B] rounded-xl border border-[#2F2F2B] p-2 sm:p-2.5 shadow-ambient">
-                <div className="flex items-center justify-between px-3 py-2 border-b border-[#2A2A27] mb-2 bg-[#181817] rounded-t-lg">
-                  <span className="text-xs font-mono text-[#A3A39E]">transferencia / entre_lojas</span>
-                  <span className="text-[11px] font-mono text-[#73736E]">Movimentação de Estoque</span>
-                </div>
-                <div className="overflow-hidden rounded-lg border border-[#262624] bg-[#121211]">
-                  <img
-                    src="/screenshot-transferencia.jpg"
-                    alt="Modal de transferência de aparelho entre lojas no Nexus Comercial"
-                    className="w-full h-auto block"
-                  />
+              {/* Card A: "Transferir Aparelho" (Posicionada no canto inferior esquerdo) */}
+              <div
+                onClick={() => setActiveCard('transferencia')}
+                onMouseEnter={() => setHoveredCard('transferencia')}
+                className={`absolute bottom-0 left-0 w-[82%] sm:w-[78%] cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  topCard === 'transferencia'
+                    ? 'z-30 opacity-100 scale-100 shadow-ambient translate-y-1'
+                    : 'z-10 opacity-85 scale-[0.96] shadow-card hover:opacity-100'
+                }`}
+              >
+                <div className="bg-[#1D1D1B] rounded-xl border border-[#2F2F2B] p-2 sm:p-2.5 transition-colors">
+                  <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#2A2A27] mb-2 bg-[#181817] rounded-t-lg">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#73736E]" />
+                      <span className="text-[11px] font-mono text-[#A3A39E]">transferencia / entre_lojas</span>
+                    </div>
+                    <span className="text-[10px] font-mono text-[#73736E]">Movimentação de Estoque</span>
+                  </div>
+                  <div className="overflow-hidden rounded-lg border border-[#262624] bg-[#121211]">
+                    <img
+                      src="/screenshot-transferencia.jpg"
+                      alt="Modal de transferência de aparelho entre lojas no Nexus Comercial"
+                      className="w-full h-auto block"
+                    />
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {/* Mobile second image fallback (stacked nicely without awkward cut) */}
-              <div className="sm:hidden mt-4 bg-[#1D1D1B] rounded-xl border border-[#2F2F2B] p-2 shadow-card">
-                <div className="flex items-center justify-between px-3 py-1.5 border-b border-[#2A2A27] mb-1.5 bg-[#181817] rounded-t-lg">
-                  <span className="text-[11px] font-mono text-[#A3A39E]">minhas_lojas / filiais</span>
-                  <span className="text-[10px] font-mono text-[#73736E]">Rede Comercial</span>
-                </div>
-                <div className="overflow-hidden rounded-lg border border-[#262624] bg-[#121211]">
-                  <img
-                    src="/screenshot-lojas.jpg"
-                    alt="Gestão de unidades e filiais no Nexus Comercial"
-                    className="w-full h-auto block"
-                  />
-                </div>
-              </div>
+            {/* Mobile helper indicator */}
+            <div className="sm:hidden mt-3 text-center">
+              <span className="text-[11px] font-mono text-[#73736E] inline-flex items-center gap-1.5">
+                <Layers size={12} />
+                Toque nos botões ou nos cartões para alternar
+              </span>
             </div>
           </div>
 
